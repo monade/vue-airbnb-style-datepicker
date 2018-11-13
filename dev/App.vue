@@ -56,6 +56,32 @@
         </div>
       </div>
 
+      <div class="datepicker-container single-with-input">
+        <h3>Single datepicker with not in month dates</h3>
+        <div class="datepicker-trigger">
+          <input
+            type="text"
+            id="datepicker-input-single-trigger-with-month-dates"
+            :value="formatDates(inputSingleDateTwo)"
+            placeholder="Select date"
+          >
+
+          <airbnb-style-datepicker
+            :trigger-element-id="'datepicker-input-single-trigger-with-month-dates'"
+            :mode="'single'"
+            :date-one="inputSingleDateTwo"
+            :months-to-show="1"
+            :show-not-in-month-days="true"
+            @date-one-selected="val => { inputSingleDateTwo = val }"
+            @apply="applyMethod"
+            @closed="closedMethod"
+            @cancelled="cancelledMethod"
+            @previous-month="changeMonthMethod"
+            @next-month="changeMonthMethod"
+          />
+        </div>
+      </div>
+
       <div class="datepicker-container with-button">
         <h3>Range datepicker with button</h3>
         <div class="datepicker-trigger">
@@ -125,6 +151,7 @@ export default {
       inputDateOne: '',
       inputDateTwo: '',
       inputSingleDateOne: '',
+      inputSingleDateTwo: '',
       buttonDateOne: '',
       buttonDateTwo: '',
       inlineDateOne: '',
@@ -132,7 +159,7 @@ export default {
       sundayFirst: false,
       alignRight: false,
       showDatepickers: true,
-      trigger: false
+      trigger: false,
     }
   },
   computed: {},
@@ -177,8 +204,8 @@ export default {
     },
     changeMonthMethod(visibleMonths) {
       console.log('change months', visibleMonths)
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -187,8 +214,8 @@ html,
 body {
   min-height: 200vh;
   font-size: 14px;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 18px;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
